@@ -14,6 +14,7 @@
 <body>
 <H1>ADEQUATE : an another Vendor Assesement tool</H1>
 
+<!--
 <form action="/">
 <select name="feature_name">
 	{% for feature in feature_names %}
@@ -27,13 +28,14 @@
 Number of Bins:  <input type="text" size=6 name="bins" value="{{ bins }}">
 <input type="submit">
 </form>
+-->
 
-<small>Time to generate plot:  {{ time_to_plot }}</small><BR>
 
 
 {{ script|safe }}
 {{ div|safe }}
-
+<BR>
+<small>Time to generate plot:  {{ time_to_plot }}</small>
 
 </body>
 </html>

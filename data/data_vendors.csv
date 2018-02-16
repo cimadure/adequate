@@ -1,0 +1,29 @@
+Categories,Criteria,Target,Apple,IBM,HP,Huawei
+Risk,Financial Stability,3,4,4,3,2
+Risk,Market,,3,4,2,2
+Risk,Availability,4,4,4,3,1
+Technology/ innovation,Resources,3,4,5,3,2
+Technology/ innovation,Product,3,4,5,1,3
+Technology/ innovation,innovative power,,3,3,2,2
+Technology/ innovation,Coooperation,3,4,5,3,2
+Commercial aspects,Prices,4,1,1,4,5
+Commercial aspects,Quotation behaviour,4,5,5,1,
+Commercial aspects,Contract,,4,5,3,
+Commercial aspects,Process,,3,4,3,1
+Commercial aspects,Cooporation,,,,,
+Logistics,Schedule/volume effectiveness,,4,4,3,1
+Logistics,Technical handling,4,5,1,2,3
+Quality,Services/supply,3,5,4,2,2
+Quality,Humain Ressources,,,,,
+Quality,Documentation,4,5,5,4,2
+Quality,Cooperation,3,4,5,3,1
+Quality,Quality management,,4,5,3,2
+Industrial safety,Industrial safety,,,5,,
+Industrial safety,Environmental protection,,,,,
+Product,Multi platform,5,2,5,5,3
+Product,Quality,4,4,5,3,3
+Product,availability,4,5,3,3,3
+Product,Price,3,1,1,4,5
+Product,Robustness,3,4,2,2,4
+Product,AIl compatibilty,4,2,4,5,3
+Product,PowerBI compatible,4,2,4,5,3
