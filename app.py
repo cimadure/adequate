@@ -4,7 +4,7 @@ from bokeh.charts import Histogram
 from bokeh.embed import components
 import time
 from bokeh.layouts import gridplot, widgetbox,layout, row
-from bokeh.models.widgets import Button, RadioButtonGroup, Select, Slider
+from bokeh.models.widgets import Button, RadioButtonGroup, Select, Slider, DataTable
 from bokeh.plotting import figure
 
 app = Flask(__name__)
@@ -63,6 +63,9 @@ def index():
 
     #p = figure(plot_height=600, plot_width=700)
     #l = layout([p])
+
+    #data_table = DataTable(source=iris_df, width=800)
+
     script, div = components( row(w, plot))
     return render_template("vizualize.html", script=script, div=div,time_to_plot=time_to_plot)
                            #bins=bins, feature_names=feature_names, current_feature_name=current_feature_name)
