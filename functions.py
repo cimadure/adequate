@@ -3,6 +3,7 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction import FeatureHasher
 import numpy as np
+from sklearn import preprocessing
 
 INDEXES = ['Category', 'Criteria']
 
@@ -46,3 +47,21 @@ def process(df):
     # lb_make = LabelEncoder()
     # obj_df["make_code"] = lb_make.fit_transform(obj_df["make"])
     # obj_df[["make", "make_code"]].head(11)
+
+
+def stack_scoring(df):
+    return reshape_data(df).stack()
+    # return df.stack()
+
+
+def convert_text_to_features(df):
+    label_category = preprocessing.LabelEncoder()
+    label_category.fit(df['Category'])
+    df['Category'] = label_category.transform(df['Category'])
+
+    label_criteria = preprocessing.LabelEncoder()
+    label_criteria.fit(df['Criteria'])
+    df['Criteria'] = label_criteria.transform(df['Criteria'])
+    return df
+    #yield label_category
+    #yield label_criteria
