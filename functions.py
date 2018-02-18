@@ -33,8 +33,8 @@ def reshape_data(df):
 def process(df):
     dfs = np.split(reshape_data(df), [1], axis=1)
 
-    print(dfs[0].head(4))
-    print(dfs[1].head(4))
+    #print(dfs[0].head(4))
+    #print(dfs[1].head(4))
     #print(dfs[0].index)
 
     #m = df.as_matrix(INDEXES)
@@ -73,12 +73,12 @@ def convert_text_to_features(df):
 def i_dont_know(df, train):
 
     #df = reduce_dimension(df)
-    print(df)
+    #print(df)
 
     # example fill with 5 in train section
     imp = Imputer(missing_values='NaN', strategy='mean', axis=1) # axis 0 in examples
     imp.fit(train)
     X = imp.transform(df)
-    print(X)
+    #print(X)
     xy = reduce_dimension(X)
     return xy

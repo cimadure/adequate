@@ -18,7 +18,7 @@ feature_names = iris_df.columns[0:-1].values.tolist()
 
 # create some widgets
 #rating = Slider(start=0, end=10, value=1, step=.1, title="Slider")
-button_group = RadioButtonGroup(labels=["Option 1", "Option 2", "Option 3"], active=0)
+button_group = RadioButtonGroup(labels=["Average", "O/5", "5/5"], active=0)
 #base_line = Select(title="minimal target :", value="Target", options=["IBM", "bar", "baz", "quux"])
 
 
@@ -81,6 +81,28 @@ def create_figure():
 
     return p
 
+df = pd.read_csv("data/data_vendors.csv")
+#print(df)
+
+
+columns = [
+    #Category, Criteria, Target, Apple, IBM, HP, Huawei
+    TableColumn(field='Category', title='cat Number'),
+    TableColumn(field='Criteria', title='crit Number'),
+    # TableColumn(field='Target', title='targ Number',),
+    # TableColumn(field='Apple', title='ibm'),
+    # TableColumn(field='IBM', title='hp'),
+    # TableColumn(field='HP', title='hu'),
+    # TableColumn(field='Huawei', title='app Mass')
+]
+column_names = [tc.field for tc in columns]
+print(column_names)
+
+#df = pd.DataFrame(np.random.randn(4, len(column_names)), columns=column_names)
+print(df[column_names])
+source = ColumnDataSource(df[column_names])
+print(source)
+
 
 # Index page
 @app.route('/')
@@ -104,32 +126,15 @@ def index():
     time_to_plot = t1 - t0
     time_to_plot = "%.4f seconds" % time_to_plot
 
-    df = pd.read_csv("data/data_vendors.csv")
-    print(df)
 
-    columns = [
-        #Category, Criteria, Target, Apple, IBM, HP, Huawei
-        TableColumn(field='Category', title='cat Number'),
-        TableColumn(field='Criteria', title='crit Number'),
-        TableColumn(field='Target', title='targ Number'),
-        TableColumn(field='Apple', title='ibm'),
-        TableColumn(field='IBM', title='hp'),
-        TableColumn(field='HP', title='hu'),
-        TableColumn(field='Huawei', title='app Mass')
-    ]
-    column_names = [tc.field for tc in columns]
-    print(column_names)
-    source = ColumnDataSource(df[column_names])
-    original_source = ColumnDataSource(df)
     data_table = DataTable(source=source, columns=columns)#, height=600, editable=True)
     table = widgetbox(data_table)
-    #p = figure(plot_height=600, plot_width=700)
-    #l = layout([p])
 
-    #data_table = DataTable(source=iris_df, width=800)
+#    l = layout(children=[[plot],w,table])
+    l = layout(children=[table])
 
     script, div = components(row(w, plot))
-    #script, div = components(row(table))
+    #script, div = components(l)
 
     return render_template("vizualize.html", script=script, div=div,time_to_plot=time_to_plot)
                            #bins=bins, feature_names=feature_names, current_feature_name=current_feature_name)
