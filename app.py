@@ -11,11 +11,6 @@ from functions import *
 
 app = Flask(__name__)
 
-# Load the Iris Data Set
-iris_df = pd.read_csv("data/iris.data",
-                      names=["Sepal Length", "Sepal Width", "Petal Length", "Petal Width", "Species"])
-feature_names = iris_df.columns[0:-1].values.tolist()
-
 # create some widgets
 #rating = Slider(start=0, end=10, value=1, step=.1, title="Slider")
 button_group = RadioButtonGroup(labels=["Average", "O/5", "5/5"], active=0)
@@ -107,25 +102,12 @@ print(source)
 # Index page
 @app.route('/')
 def index():
-    # # Determine the selected feature
-    # current_feature_name = request.args.get("feature_name")
-    # if current_feature_name == None:
-    #     current_feature_name = "Sepal Length"
-    #
-    # # Determine the number of bins
-    # bins = request.args.get("bins")
-    # if bins == "" or bins == None:
-    #     bins = 10
-    # else:
-    #     bins = int(bins)
-
     # Create the plot, and time it
     t0 = time.time()
     plot = create_figure()
     t1 = time.time()
     time_to_plot = t1 - t0
     time_to_plot = "%.4f seconds" % time_to_plot
-
 
     data_table = DataTable(source=source, columns=columns)#, height=600, editable=True)
     table = widgetbox(data_table)
@@ -137,8 +119,6 @@ def index():
     #script, div = components(l)
 
     return render_template("vizualize.html", script=script, div=div,time_to_plot=time_to_plot)
-                           #bins=bins, feature_names=feature_names, current_feature_name=current_feature_name)
-
 
 # With debug=True, Flask server will auto-reload
 # when there are code changes
