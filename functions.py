@@ -4,8 +4,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction import FeatureHasher
 import numpy as np
 from sklearn import preprocessing
+from sklearn.preprocessing import Imputer
 
 INDEXES = ['Category', 'Criteria']
+
 
 def reduce_dimension(x):
     mds = manifold.MDS(n_components=2, max_iter=100, n_init=1)
@@ -20,6 +22,7 @@ def hash_data(x, n_features=10):
     h = FeatureHasher(n_features=n_features)
     f = h.transform(x)
     return f.toarray()
+
 
 def reshape_data(df):
     df = df.set_index(INDEXES)
@@ -65,3 +68,17 @@ def convert_text_to_features(df):
     return df
     #yield label_category
     #yield label_criteria
+
+
+def i_dont_know(df, train):
+
+    #df = reduce_dimension(df)
+    print(df)
+
+    # example fill with 5 in train section
+    imp = Imputer(missing_values='NaN', strategy='mean', axis=1) # axis 0 in examples
+    imp.fit(train)
+    X = imp.transform(df)
+    print(X)
+    xy = reduce_dimension(X)
+    return xy
