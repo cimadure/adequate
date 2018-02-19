@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from app import django_app
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', django_app, name='index')
 ]

@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+from django.shortcuts import render, render_to_response
+
 import pandas as pd
 from bokeh.embed import components
 import time
@@ -119,6 +121,26 @@ def index():
     #script, div = components(l)
 
     return render_template("vizualize.html", script=script, div=div,time_to_plot=time_to_plot)
+
+
+def django_app(request):
+    x= [1,3,5,7,9,11,13]
+    y= [1,2,3,4,5,6,7]
+    title = 'y = f(x)'
+
+    plot = figure(title= title ,
+        x_axis_label= 'X-Axis',
+        y_axis_label= 'Y-Axis',
+        plot_width =400,
+        plot_height =400)
+
+    plot.line(x, y, legend= 'f(x)', line_width = 2)
+    #Store components
+    script, div = components(plot)
+
+    #Feed them to the Django template.
+    return render_to_response( 'vizualize.html',
+            {'script' : script , 'div' : div} )
 
 # With debug=True, Flask server will auto-reload
 # when there are code changes
