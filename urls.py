@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app import django_app
+from app import django_app, tableau
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', django_app, name='index')
+    url(r'^$', django_app, name='index'),
+    url(r'^tableau', tableau, name='tableau')
 ]
