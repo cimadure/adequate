@@ -61,7 +61,7 @@ def test_process():
     df = pd.read_csv("data/data_vendors.csv")
     df = reshape_data(df).transpose()
     train = df.loc['Target']
-    xy = i_dont_know(df,train=train)
+    xy = i_dont_know(df, train=train)
     print(xy)
     # df = convert_text_to_features(DF_EXAMPLE)
     # print(df)
